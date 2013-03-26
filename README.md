@@ -1,0 +1,4 @@
+phonegap-utils
+==============
+
+Phonegap utilities
