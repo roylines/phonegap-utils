@@ -7,6 +7,7 @@ APP=$1
 DOMAIN=$2
 PWD="`pwd`"
 USER="`whoami`"
+ANGULARJS_VERSION="1.0.5"
 JQUERY_VERSION="1.9.1"
 JQUERY_MOBILE_VERSION="1.3.0"
 
@@ -20,8 +21,20 @@ $($CREATE $DIR $DOMAIN.$APP $APP)
 sudo chgrp -R users $DIR
 sudo chown -R $USER $DIR
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 cd $DIR
 sed -i 's/android:minSdkVersion="7"/android:minSdkVersion="10"/g' AndroidManifest.xml
+
+# backup www
+cd $DIR
+cd assets
+cp -r www www-orig
+
+# html
+cd $DIR
+cd assets/www
+cp $SCRIPT_DIR/templates/assets/www/*.html .
 
 # css
 cd $DIR
@@ -32,7 +45,15 @@ wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_
 # js
 cd $DIR
 cd assets/www/js
+wget http://code.angularjs.org/$ANGULARJS_VERSION/angular.min.js
 wget http://code.jquery.com/jquery-$JQUERY_VERSION.min.js
 wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_MOBILE_VERSION.min.js
 
+#img
+cd $DIR
+cd assets/www/img
+# rm *.png
+
+#build
+cd $DIR
 # ant release
