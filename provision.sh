@@ -34,7 +34,11 @@ cp -r www www-orig
 # html
 cd $DIR
 cd assets/www
-cp $SCRIPT_DIR/templates/assets/www/*.html .
+cp -r $SCRIPT_DIR/templates/assets/www/* .
+sed -i "s/HEADER/$APP/g" index.html
+sed -i "s/ANGULAR/angular-$ANGULARJS_VERSION.min/g" index.html
+sed -i "s/JQUERY.MOBILE/jquery.mobile-$JQUERY_MOBILE_VERSION.min/g" index.html
+sed -i "s/JQUERY/jquery-$JQUERY_VERSION.min/g" index.html
 
 # css
 cd $DIR
@@ -46,6 +50,7 @@ wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_
 cd $DIR
 cd assets/www/js
 wget http://code.angularjs.org/$ANGULARJS_VERSION/angular.min.js
+mv angular.min.js angular-$ANGULARJS_VERSION.min.js
 wget http://code.jquery.com/jquery-$JQUERY_VERSION.min.js
 wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_MOBILE_VERSION.min.js
 
