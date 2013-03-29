@@ -29,13 +29,15 @@ sed -i 's/android:minSdkVersion="7"/android:minSdkVersion="10"/g' AndroidManifes
 # backup www
 cd $DIR
 cd assets
-cp -r www www-orig
+# cp -r www www-orig
 
 # html
 cd $DIR
 cd assets/www
 cp -r $SCRIPT_DIR/templates/assets/www/* .
-sed -i "s/HEADER/$APP/g" index.html
+sed -i "s/APP/$APP/g" index.html
+sed -i "s/APP/$APP/g" js/index.js
+
 sed -i "s/ANGULAR/angular-$ANGULARJS_VERSION.min/g" index.html
 sed -i "s/JQUERY.MOBILE/jquery.mobile-$JQUERY_MOBILE_VERSION.min/g" index.html
 sed -i "s/JQUERY/jquery-$JQUERY_VERSION.min/g" index.html
@@ -44,7 +46,7 @@ sed -i "s/JQUERY/jquery-$JQUERY_VERSION.min/g" index.html
 cd $DIR
 cd assets/www/css
 rm index.css
-wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_MOBILE_VERSION.min.css
+# wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_MOBILE_VERSION.min.css
 
 # js
 cd $DIR
@@ -52,13 +54,15 @@ cd assets/www/js
 wget http://code.angularjs.org/$ANGULARJS_VERSION/angular.min.js
 mv angular.min.js angular-$ANGULARJS_VERSION.min.js
 wget http://code.jquery.com/jquery-$JQUERY_VERSION.min.js
-wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_MOBILE_VERSION.min.js
+# wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_MOBILE_VERSION.min.js
 
 #img
 cd $DIR
+rm res/*/ic_*
 cd assets/www/img
-# rm *.png
+rm *.png
 
 #build
 cd $DIR
+cp $SCRIPT_DIR/templates/custom_rules.xml .
 # ant release

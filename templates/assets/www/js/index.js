@@ -10,6 +10,10 @@ var app = {
         }
     },
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+         var db = window.openDatabase("APP", "1.0", "APP data", 1000000);
+         db.transaction(this.createTables);
+    },
+    createTables: function(tx) {
+         tx.executeSql('CREATE TABLE IF NOT EXISTS THINGS (id unique, data)');
     }
 };
