@@ -17,3 +17,5 @@ var app = {
          tx.executeSql('CREATE TABLE IF NOT EXISTS THINGS (id unique, data)');
     }
 };
+
+app.initialize();

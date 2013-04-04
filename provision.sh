@@ -7,6 +7,8 @@ APP=$1
 DOMAIN=$2
 PWD="`pwd`"
 USER="`whoami`"
+
+CORDOVA_VERSION="2.5.0"
 ANGULARJS_VERSION="1.0.5"
 JQUERY_VERSION="1.9.1"
 JQUERY_MOBILE_VERSION="1.3.0"
@@ -41,6 +43,7 @@ sed -i "s/APP/$APP/g" js/index.js
 sed -i "s/ANGULAR/angular-$ANGULARJS_VERSION.min/g" index.html
 sed -i "s/JQUERY.MOBILE/jquery.mobile-$JQUERY_MOBILE_VERSION.min/g" index.html
 sed -i "s/JQUERY/jquery-$JQUERY_VERSION.min/g" index.html
+sed -i "s/CORDOVA/cordova-$CORDOVA_VERSION/g" index.html
 
 # css
 cd $DIR
