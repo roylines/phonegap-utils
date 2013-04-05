@@ -54,10 +54,10 @@ rm index.css
 # js
 cd $DIR
 cd assets/www/js
+wget https://github.com/tigbro/jquery-mobile-angular-adapter/raw/master/compiled/jquery-mobile-angular-adapter.min.js
 wget http://code.angularjs.org/$ANGULARJS_VERSION/angular.min.js
 mv angular.min.js angular-$ANGULARJS_VERSION.min.js
 wget http://code.jquery.com/jquery-$JQUERY_VERSION.min.js
-# wget http://code.jquery.com/mobile/$JQUERY_MOBILE_VERSION/jquery.mobile-$JQUERY_MOBILE_VERSION.min.js
 
 #img
 cd $DIR
